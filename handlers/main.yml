@@ -1,0 +1,7 @@
+---
+# prometheus_server/handlers/main.yml
+
+- name: 'Restart the prometheus service'
+  service:
+    name: "{{ systemd_unit_name }}"
+    state: 'restarted'
