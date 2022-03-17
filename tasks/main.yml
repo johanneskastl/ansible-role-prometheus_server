@@ -1,0 +1,26 @@
+---
+# prometheus_server/tasks/main.yml
+
+- name: 'Populate the package name variable depending on the OS'
+  include: package_name.yml
+
+- name: 'Install the package'
+  package:
+    name: "{{ node_exporter_package_name }}"
+    state: 'present'
+
+- name: 'Create the configuration file'
+  template:
+    src: 'prometheus.yml.j2'
+    dest: '/etc/prometheus/prometheus.yml'
+    owner: 'root'
+    group: 'root'
+    mode: '0644'
+  notify:
+    - 'Restart the prometheus service'
+
+- name: 'Start and enable the service'
+  service:
+    name: "{{ systemd_unit_name }}"
+    state: 'started'
+    enabled: 'true'
