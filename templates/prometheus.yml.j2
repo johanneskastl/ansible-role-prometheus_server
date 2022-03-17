@@ -1,0 +1,37 @@
+# Sample config for Prometheus.
+
+global:
+  scrape_interval: {{ scrape_interval }}     
+  evaluation_interval: {{ evaluation_interval }}
+  scrape_timeout: {{ scrape_timeout }}
+
+  # Attach these labels to any time series or alerts when communicating with
+  # external systems (federation, remote storage, Alertmanager).
+  external_labels:
+      monitor: 'example'
+
+# Load and evaluate rules in this file every 'evaluation_interval' seconds.
+rule_files:
+  # - "first.rules"
+  # - "second.rules"
+
+scrape_configs:
+  - job_name: 'prometheus'
+    scrape_interval: {{ prometheus_scrape_interval }}
+    scrape_timeout: {{ prometheus_scrape_timeout }}
+    # metrics_path defaults to '/metrics'
+    # scheme defaults to 'http'.
+    static_configs:
+      - targets: ['localhost:9090']
+
+{% if scrape_local_node_exporter | bool %}
+  - job_name: node
+{% if local_node_exporter_scrape_interval is defined %}
+    scrape_interval: {{ local_node_exporter_scrape_interval }}
+{% endif %}
+{% if local_node_exporter_scrape_timeout is defined %}
+    scrape_timeout: {{ local_node_exporter_scrape_timeout }}
+{% endif %}
+    static_configs:
+      - targets: ['localhost:9100']
+{%- endif %}
