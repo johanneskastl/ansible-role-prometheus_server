@@ -2,3 +2,14 @@
 # prometheus_server/defaults/main.yml
 
 systemd_unit_name: 'prometheus.service'
+
+scrape_interval: '15s'
+evaluation_interval: '15s'
+scrape_timeout: '10s'
+
+#
+prometheus_scrape_interval: '5s'
+prometheus_scrape_timeout: '5s'
+
+#
+scrape_local_node_exporter: 'true'
