@@ -1,0 +1,4 @@
+---
+# prometheus_server/defaults/main.yml
+
+systemd_unit_name: 'prometheus.service'
