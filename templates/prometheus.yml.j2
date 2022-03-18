@@ -36,4 +36,9 @@ scrape_configs:
     # scheme defaults to 'http'.
     static_configs:
       - targets: ['localhost:9100']
+{% if additional_nodes is defined%}
+{% for host in additional_nodes %}
+      - targets: ['{{ host }}:9100']
+{% endfor %}
+{% endif %}
 {%- endif %}
