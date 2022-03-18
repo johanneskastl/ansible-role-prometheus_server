@@ -32,6 +32,8 @@ scrape_configs:
 {% if local_node_exporter_scrape_timeout is defined %}
     scrape_timeout: {{ local_node_exporter_scrape_timeout }}
 {% endif %}
+    # metrics_path defaults to '/metrics'
+    # scheme defaults to 'http'.
     static_configs:
       - targets: ['localhost:9100']
 {%- endif %}
