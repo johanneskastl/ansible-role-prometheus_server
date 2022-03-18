@@ -38,12 +38,23 @@ Dependencies
 
 None
 
-Example Playbook
+Example Playbook for only setting up the server itself without any other nodes
 ----------------
 
     - hosts: servers
       roles:
         - { role: 'johanneskastl.prometheus_server' }
+
+Example Playbook with two additional nodes to be scraped
+----------------
+
+    - hosts: servers
+      roles:
+        - role: 'johanneskastl.prometheus_server'
+          vars:
+            additional_nodes:
+              - 192.168.1.100
+              - 10.11.12.100
 
 License
 -------
