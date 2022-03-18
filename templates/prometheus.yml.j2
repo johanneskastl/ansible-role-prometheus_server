@@ -35,7 +35,9 @@ scrape_configs:
     # metrics_path defaults to '/metrics'
     # scheme defaults to 'http'.
     static_configs:
+{% if scrape_local_node_exporter | bool %}
       - targets: ['localhost:9100']
+{% endif %}
 {% if additional_nodes is defined%}
 {% for host in additional_nodes %}
       - targets: ['{{ host }}:9100']
