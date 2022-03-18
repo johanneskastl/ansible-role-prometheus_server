@@ -26,11 +26,11 @@ scrape_configs:
 
 {% if scrape_local_node_exporter | bool %}
   - job_name: node
-{% if local_node_exporter_scrape_interval is defined %}
-    scrape_interval: {{ local_node_exporter_scrape_interval }}
+{% if node_exporter_scrape_interval is defined %}
+    scrape_interval: {{ node_exporter_scrape_interval }}
 {% endif %}
-{% if local_node_exporter_scrape_timeout is defined %}
-    scrape_timeout: {{ local_node_exporter_scrape_timeout }}
+{% if node_exporter_scrape_timeout is defined %}
+    scrape_timeout: {{ node_exporter_scrape_timeout }}
 {% endif %}
     # metrics_path defaults to '/metrics'
     # scheme defaults to 'http'.
