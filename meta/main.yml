@@ -1,5 +1,6 @@
 galaxy_info:
   role_name: 'prometheus_server'
+  namespace: 'johanneskastl'
   author: 'Johannes Kastl'
   description: 'Install, configure and start the Prometheus server'
   company: 'B1 Systems GmbH'
