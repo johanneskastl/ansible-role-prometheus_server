@@ -2,7 +2,7 @@
 # prometheus_server/tasks/main.yml
 
 - name: 'Populate the package name variable depending on the OS'
-  include: package_name.yml
+  include_tasks: package_name.yml
 
 - name: 'Install the package'
   package:
