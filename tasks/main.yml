@@ -6,7 +6,7 @@
 
 - name: 'Install the package'
   ansible.builtin.package:
-    name: "{{ node_exporter_package_name }}"
+    name: "{{ prometheus_server_package_name }}"
     state: 'present'
 
 - name: 'Create the configuration file'

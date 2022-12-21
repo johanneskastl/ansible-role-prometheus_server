@@ -3,12 +3,12 @@
 
 - name: 'Set package name on openSUSE/SUSE'
   ansible.builtin.set_fact:
-    node_exporter_package_name: 'golang-github-prometheus-prometheus'
+    prometheus_server_package_name: 'golang-github-prometheus-prometheus'
   when:
     - 'ansible_os_family == "Suse"'
 
 - name: 'Set package name on openSUSE MicroOS'
   ansible.builtin.set_fact:
-    node_exporter_package_name: 'golang-github-prometheus-prometheus'
+    prometheus_server_package_name: 'golang-github-prometheus-prometheus'
   when:
     - 'ansible_os_family == "openSUSE MicroOS"'
