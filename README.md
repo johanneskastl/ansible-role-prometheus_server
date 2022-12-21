@@ -1,3 +1,5 @@
+![Ansible Lint](https://github.com/johanneskastl/ansible-role-prometheus_server/workflows/Ansible%20Lint/badge.svg)
+
 prometheus_server
 =========
 
