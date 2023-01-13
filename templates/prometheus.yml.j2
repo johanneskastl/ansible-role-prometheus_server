@@ -43,7 +43,7 @@ scrape_configs:
     # scheme defaults to 'http'.
     static_configs:
 {% if scrape_local_node_exporter | bool %}
-      - targets: ['{{ hostvars[inventory_hostname]['ansible_default_ipv4']['address'] }}:9100']
+      - targets: ['{{ hostvars[inventory_hostname]['ansible_hostname'] }}:9100']
 {% endif %}
 {% if additional_nodes is defined %}
 {% for host in additional_nodes %}
