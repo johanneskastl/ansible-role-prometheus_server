@@ -21,6 +21,15 @@ Role Variables
 - `prometheus_scrape_interval`: scrape interval for the prometheus job, defaults to `5s`
 - `prometheus_scrape_timeout`: scrape timeout for the prometheus job, defaults to `5s`
 
+**TLS settings**
+
+- `enable_tls`: Boolean value to enable TLS for prometheus the server (UI and metrics)
+
+If TLS is to be enabled, you need to set the following variables:
+
+- `tls_certificate_crt_path`: path to the TLS certificate's crt file
+- `tls_certificate_key_path`: path to the TLS certificate's key file
+
 **Handling the behaviour of the role**
 - `scrape_local_node_exporter`: enable scraping the node-exporter metrics on the prometheus server itself (enabled by default)
 
