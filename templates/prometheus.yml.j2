@@ -25,7 +25,11 @@ scrape_configs:
     scheme: 'https'
 {% endif %}
     static_configs:
+{% if enable_tls | bool %}
+      - targets: ['{{ hostvars[inventory_hostname]['ansible_hostname'] }}:9090']
+{% else %}
       - targets: ['localhost:9090']
+{% endif %}
 
 {% if scrape_local_node_exporter | bool or additional_nodes is defined %}
   - job_name: node
