@@ -8,6 +8,13 @@
     - 'enable_tls | bool'
     - 'tls_certificate_crt_path is undefined'
 
+- name: 'Fail if prerequisites for TLS are missing: tls_certificate_key_path'
+  ansible.builtin.fail:
+    msg: 'Variable tls_certificate_key_path is not set'
+  when:
+    - 'enable_tls | bool'
+    - 'tls_certificate_key_path is undefined'
+
 - name: 'Populate the package name variable depending on the OS'
   ansible.builtin.include_tasks: package_name.yml
 
