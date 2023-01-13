@@ -21,6 +21,9 @@ scrape_configs:
     scrape_timeout: {{ prometheus_scrape_timeout }}
     # metrics_path defaults to '/metrics'
     # scheme defaults to 'http'.
+{% if enable_tls | bool %}
+    scheme: 'https'
+{% endif %}
     static_configs:
       - targets: ['localhost:9090']
 
