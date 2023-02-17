@@ -3,5 +3,5 @@
 
 - name: 'Restart the prometheus service'
   ansible.builtin.service:
-    name: "{{ systemd_unit_name }}"
+    name: "{{ prometheus_server_service_name }}"
     state: 'restarted'
