@@ -1,8 +1,6 @@
 ---
 # prometheus_server/defaults/main.yml
 
-systemd_unit_name: 'prometheus.service'
-
 #
 enable_tls: false
 
