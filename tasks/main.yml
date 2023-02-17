@@ -18,6 +18,9 @@
 - name: 'Populate the package name variable depending on the OS'
   ansible.builtin.include_tasks: package_name.yml
 
+- name: 'Populate the service name variable depending on the OS'
+  ansible.builtin.include_tasks: service_name.yml
+
 - name: 'Install the package'
   ansible.builtin.package:
     name: "{{ prometheus_server_package_name }}"
