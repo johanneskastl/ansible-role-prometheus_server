@@ -1,0 +1,20 @@
+---
+# prometheus_server/tasks/service_name.yml
+
+- name: 'Set service name on openSUSE/SUSE'
+  ansible.builtin.set_fact:
+    prometheus_server_service_name: 'prometheus.service'
+  when:
+    - 'ansible_os_family == "Suse"'
+
+- name: 'Set service name on openSUSE MicroOS'
+  ansible.builtin.set_fact:
+    prometheus_server_service_name: 'prometheus.service'
+  when:
+    - 'ansible_os_family == "openSUSE MicroOS"'
+
+- name: 'Set service name on openSUSE Leap Micro'
+  ansible.builtin.set_fact:
+    prometheus_server_service_name: 'prometheus.service'
+  when:
+    - 'ansible_os_family == "openSUSE Leap Micro"'
