@@ -22,6 +22,17 @@ rule_files:
 {% endfor %}
 {% endif %}
 
+{% if enable_alertmanager | bool and alertmanager_static_config_targets is defined %}
+# Alerting specifies settings related to the Alertmanager
+alerting:
+  alertmanagers:
+    - static_configs:
+      - targets:
+{% for url in alertmanager_static_config_targets %}
+        - {{ url }}
+{% endfor %}
+{% endif %}
+
 scrape_configs:
   - job_name: 'prometheus'
     scrape_interval: {{ prometheus_scrape_interval }}
