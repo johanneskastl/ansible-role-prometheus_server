@@ -15,3 +15,6 @@ prometheus_scrape_timeout: '5s'
 
 #
 scrape_local_node_exporter: 'true'
+
+# alertmanager
+enable_alertmanager: false
