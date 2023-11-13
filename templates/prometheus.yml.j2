@@ -11,9 +11,16 @@ global:
       monitor: 'example'
 
 # Load and evaluate rules in this file every 'evaluation_interval' seconds.
+{% if alert_rules_files is undefined %}
 rule_files:
   # - "first.rules"
   # - "second.rules"
+{% else %}
+rule_files:
+{% for rulefile in alert_rules_files %}
+  - {{ rulefile }}
+{% endfor %}
+{% endif %}
 
 scrape_configs:
   - job_name: 'prometheus'
