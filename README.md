@@ -44,6 +44,28 @@ Both of these are only set if defined by the user. Otherwise they will be omitte
 
 - `additional_nodes`: list of IP addresses or hostnames of additional nodes, that should be added to the existing `node` job, aka scraping their node-exporter metrics on port 9100
 
+**Alerts settings**
+
+To have Prometheus read in files containing alert rules, you can use the
+variable `alert_rules_files`. If it is not defined, no rules files will be
+included in the configuration.
+
+You can either create the files yourself, prior to using the role. Or you can
+set the Boolean variable `copy_alert_rules_files` to `true` and place them in a
+`files` directory adjacent to your playbook.
+
+- `alert_rules_files`: list of file names (without path, relative to
+  `/etc/prometheus/`) that should be included in the prometheus configuration
+- `copy_alert_rules_files` (Boolean): whether the role should copy over the
+  files
+
+**Alertmanager settings**
+
+- `enable_alertmanager` (Boolean): Set this to true if you want to enable the
+  Alertmanager in the prometheus configuration file
+- `alertmanager_static_config_targets`: List of URLs (hostname or IP address,
+  including the port) for your Alertmanager instance(s)
+
 Dependencies
 ------------
 
