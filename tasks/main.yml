@@ -36,6 +36,20 @@
   notify:
     - 'Restart the prometheus service'
 
+- name: 'Create rules.yml'
+  ansible.builtin.copy:
+    src: "{{ item }}"
+    dest: "/etc/prometheus/{{ item }}"
+    owner: 'root'
+    group: 'root'
+    mode: '0644'
+  loop: "{{ alert_rules_files }}"
+  when:
+    - 'alert_rules_files is defined'
+    - 'copy_alert_rules_files | bool'
+  notify:
+    - 'Restart the prometheus service'
+
 - name: 'Adapt the sysconfig file for TLS'
   ansible.builtin.template:
     src: 'etc_sysconfig_prometheus.j2'
