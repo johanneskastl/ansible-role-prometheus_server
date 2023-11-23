@@ -12,7 +12,7 @@ galaxy_info:
   platforms:
     - name: debian
       versions:
-        - 'all'
+        - all
     - name: opensuse
       versions:
         - '15.1'
