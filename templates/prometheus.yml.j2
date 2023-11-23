@@ -49,7 +49,7 @@ scrape_configs:
 {% endif %}
     static_configs:
 {% if enable_tls | bool %}
-      - targets: ['{{ hostvars[inventory_hostname]['ansible_hostname'] }}:9090']
+      - targets: ['{{ hostvars[inventory_hostname]['ansible_fqdn'] | default(hostvars[inventory_hostname]['ansible_hostname']) }}:9090']
 {% else %}
       - targets: ['localhost:9090']
 {% endif %}
