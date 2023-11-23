@@ -18,3 +18,9 @@
     prometheus_server_service_name: 'prometheus.service'
   when:
     - 'ansible_os_family == "openSUSE Leap Micro"'
+
+- name: 'Set service name on Debian'
+  ansible.builtin.set_fact:
+    prometheus_server_service_name: 'prometheus'
+  when:
+    - 'ansible_distribution == "Debian"'
