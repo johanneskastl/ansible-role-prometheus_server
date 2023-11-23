@@ -63,6 +63,20 @@
   notify:
     - 'Restart the prometheus service'
 
+- name: 'Adapt /etc/default/prometheus for TLS'
+  ansible.builtin.lineinfile:
+    path: '/etc/default/prometheus'
+    line: 'ARGS="--web.config.file /etc/prometheus/webconfig.yml"'
+    regex: '^ARGS'
+    owner: 'root'
+    group: 'root'
+    mode: '0644'
+  when:
+    - 'ansible_distribution == "Debian"'
+    - 'enable_tls | bool'
+  notify:
+    - 'Restart the prometheus service'
+
 - name: 'Create the webconfig for TLS'
   ansible.builtin.template:
     src: 'webconfig.yml.j2'
