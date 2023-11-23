@@ -10,7 +10,7 @@ galaxy_info:
   min_ansible_version: '2.4'
 
   platforms:
-    - name: debian
+    - name: Debian
       versions:
         - 'bullseye'
     - name: opensuse
