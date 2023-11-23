@@ -3,6 +3,7 @@
 
 #
 enable_tls: false
+enable_basic_auth: false
 
 #
 scrape_interval: '15s'
