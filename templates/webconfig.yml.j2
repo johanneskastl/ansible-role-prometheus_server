@@ -1,6 +1,7 @@
 #
 # {{ ansible_managed }}
 #
+{% if enable_tls | bool %}
 tls_server_config:
   # Certificate and key files for server to use to authenticate to client.
   cert_file: {{ tls_certificate_crt_path }}
@@ -10,3 +11,4 @@ http_server_config:
   # Enable HTTP/2 support. Note that HTTP/2 is only supported with TLS.
   # This can not be changed on the fly.
   http2: true
+{% endif %}
