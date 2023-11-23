@@ -12,3 +12,10 @@ http_server_config:
   # This can not be changed on the fly.
   http2: true
 {% endif %}
+{% if enable_basic_auth | bool %}
+
+basic_auth_users:
+{% for user in prometheus_server_basic_auth_users %}
+  {{ user.name }}: {{ user.password_hash }}
+{% endfor%}
+{% endif %}
