@@ -42,6 +42,11 @@ scrape_configs:
 {% if enable_tls | bool %}
     scheme: 'https'
 {% endif %}
+{% if enable_basic_auth | bool %}
+    basic_auth:
+      username: {{ prometheus_server_basic_auth_users[0]['name'] }}
+      password: {{ prometheus_server_basic_auth_users[0]['password'] }}
+{% endif %}
     static_configs:
 {% if enable_tls | bool %}
       - targets: ['{{ hostvars[inventory_hostname]['ansible_hostname'] }}:9090']
