@@ -18,3 +18,9 @@
     prometheus_server_package_name: 'golang-github-prometheus-prometheus'
   when:
     - 'ansible_os_family == "openSUSE Leap Micro"'
+
+- name: 'Set package name on Debian'
+  ansible.builtin.set_fact:
+    prometheus_server_package_name: 'prometheus'
+  when:
+    - 'ansible_distribution == "Debian"'
