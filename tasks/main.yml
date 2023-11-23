@@ -71,7 +71,7 @@
     group: 'root'
     mode: '0644'
   when:
-    - 'enable_tls | bool'
+    - 'enable_tls | bool or enable_basic_auth | bool'
   notify:
     - 'Restart the prometheus service'
 
