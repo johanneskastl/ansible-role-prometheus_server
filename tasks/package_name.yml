@@ -11,7 +11,11 @@
   ansible.builtin.set_fact:
     prometheus_server_package_name: 'golang-github-prometheus-prometheus'
   when:
-    - 'ansible_os_family == "openSUSE MicroOS"'
+    -
+      '
+      ansible_os_family == "openSUSE MicroOS"
+      or ansible_distribution == "openSUSE MicroOS"
+      '
 
 - name: 'Set package name on openSUSE Leap Micro'
   ansible.builtin.set_fact:
